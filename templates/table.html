@@ -1,0 +1,38 @@
+{% load widget_tweaks %}
+{% load staticfiles %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stock</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Algo Table</h2>
+  <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Algo Name</th>
+        <th>Average pnl</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for alog in algos %}
+          <tr>
+            <td>{{alog.name}}</td>
+            <td><a href="{% url 'chart' alog.id %}">{{alog.pnl}}</a></td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
